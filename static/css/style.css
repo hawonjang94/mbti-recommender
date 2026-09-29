@@ -1,0 +1,464 @@
+/* 기본 리셋 및 전역 스타일 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f4f7f6;
+    color: #333333;
+    line-height: 1.6;
+    padding: 20px 10px;
+}
+
+/* 앱 전체 중앙 컨테이너 */
+.app-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* 상단 헤더 */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2b6cb0;
+}
+
+.header-tag {
+    font-size: 0.85rem;
+    background-color: #ebf8fa;
+    color: #319795;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* 카드 기본 컨테이너 */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+}
+
+/* 화면 숨김 및 부드러운 전환 효과 */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* 1. 시작 화면 스타일 */
+.intro-badge {
+    display: inline-block;
+    background-color: #e2e8f0;
+    color: #4a5568;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.main-title {
+    font-size: 1.85rem;
+    color: #1a202c;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.main-desc {
+    font-size: 1.05rem;
+    color: #4a5568;
+    margin-bottom: 24px;
+}
+
+.notice-box {
+    background-color: #fffaf0;
+    border-left: 4px solid #dd6b20;
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #7b341e;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* 버튼 기본 스타일 */
+.btn-primary {
+    display: block;
+    width: 100%;
+    background-color: #3182ce;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+    background-color: #2b6cb0;
+}
+
+.btn-primary:active {
+    transform: scale(0.99);
+}
+
+.btn-secondary {
+    display: block;
+    width: 100%;
+    background-color: #edf2f7;
+    color: #2d3748;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 20px;
+    border: 1px solid #cbd5e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 12px;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+/* 2. 질문 화면 & 상단 진행률 프로그레스 바 */
+.progress-container {
+    margin-bottom: 28px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #718096;
+    margin-bottom: 8px;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background-color: #edf2f7;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3182ce, #63b3ed);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.category-badge {
+    display: inline-block;
+    background-color: #ebf8fa;
+    color: #319795;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.question-title {
+    font-size: 1.35rem;
+    color: #2d3748;
+    margin-bottom: 24px;
+    line-height: 1.4;
+    min-height: 60px;
+}
+
+/* 선택지 버튼 디자인 */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+    border-color: #3182ce;
+    background-color: #f7fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.1);
+}
+
+.option-tag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #edf2f7;
+    color: #4a5568;
+    font-weight: 700;
+    border-radius: 8px;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+.option-btn:hover .option-tag {
+    background-color: #3182ce;
+    color: #ffffff;
+}
+
+.option-label {
+    font-size: 1.02rem;
+    color: #2d3748;
+    line-height: 1.4;
+}
+
+/* 3. 로딩 애니메이션 스피너 */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #edf2f7;
+    border-top: 5px solid #3182ce;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 40px auto 24px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-title {
+    font-size: 1.35rem;
+    color: #2d3748;
+    margin-bottom: 12px;
+}
+
+.loading-desc {
+    color: #718096;
+    font-size: 0.95rem;
+}
+
+/* 4. 결과 화면 */
+.disclaimer-badge {
+    display: inline-block;
+    background-color: #feebc8;
+    color: #9c4221;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.result-mbti {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #2b6cb0;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.result-character {
+    font-size: 1.35rem;
+    color: #2d3748;
+    margin-bottom: 16px;
+}
+
+.result-summary {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+/* 성향 4대 지표 백분율(%) 스펙트럼 프로그레스 바 */
+.spectrum-section {
+    background-color: #f7fafc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.sub-title {
+    font-size: 1.15rem;
+    color: #2d3748;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.spectrum-item {
+    margin-bottom: 16px;
+}
+
+.spectrum-item:last-child {
+    margin-bottom: 0;
+}
+
+.spectrum-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.spectrum-bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.spectrum-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4299e1, #48bb78);
+    border-radius: 8px;
+    transition: width 0.6s ease;
+    width: 50%;
+}
+
+/* AI 추천 활동 카드 리스트 */
+.activities-section {
+    margin-bottom: 30px;
+}
+
+.activities-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.activity-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.activity-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c5282;
+    margin-bottom: 8px;
+}
+
+.activity-reason {
+    font-size: 0.95rem;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+.activity-tip {
+    font-size: 0.85rem;
+    background-color: #ebf8fa;
+    color: #234e52;
+    padding: 8px 12px;
+    border-radius: 6px;
+    line-height: 1.4;
+}
+
+/* 실시간 검색 결과 영역 */
+.search-section {
+    background-color: #f7fafc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.search-keyword-info {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 12px;
+}
+
+.search-results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-item {
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.search-item a {
+    color: #2b6cb0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.search-item a:hover {
+    text-decoration: underline;
+}
+
+.search-snippet {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 4px;
+}
+
+/* 하단 버튼 */
+.action-buttons {
+    margin-top: 20px;
+}
+
+/* 하단 푸터 */
+.app-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #a0aec0;
+    margin-top: 30px;
+    padding: 10px 0;
+}

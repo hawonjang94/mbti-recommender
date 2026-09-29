@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 성향 분석 & 맞춤 활동 큐레이터</title>
+    <!-- 외부 스타일시트 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- 깔끔한 구글 웹폰트(Pretendard 대체용 Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 상단 헤더 -->
+        <header class="app-header">
+            <div class="logo">🌿 Mind & Act</div>
+            <span class="header-tag">AI 라이프스타일 큐레이터</span>
+        </header>
+
+        <!-- 1. 시작(Intro) 화면 -->
+        <section id="intro-section" class="card fade-in">
+            <div class="intro-badge">15문항 심층 분석</div>
+            <h1 class="main-title">나만의 숨겨진 쉼표 찾기</h1>
+            <p class="main-desc">
+                15개의 일상 질문을 통해 나의 성향 비율을 알아보고,<br>
+                <strong>Google Gemini AI</strong>가 추천하는 나만의 주말/여가 활동을 만나보세요.
+            </p>
+            <div class="notice-box">
+                💡 <strong>참고 안내:</strong> 본 테스트는 성향을 가두는 틀이 아니라, 나의 편안한 선호 경향을 가볍게 돌아보기 위한 나침반입니다.
+            </div>
+            <button id="btn-start" class="btn-primary">테스트 시작하기 →</button>
+        </section>
+
+        <!-- 2. 질문(Quiz) 화면 (초기에는 숨김) -->
+        <section id="quiz-section" class="card fade-in hidden">
+            <!-- 진행률 표시 바 -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="progress-text">질문 1 / 15</span>
+                    <span id="progress-percent">7%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div id="progress-bar-fill" class="progress-bar-fill" style="width: 7%;"></div>
+                </div>
+            </div>
+
+            <!-- 질문 카드 -->
+            <div class="quiz-content">
+                <span id="question-category" class="category-badge">일상 속 선택</span>
+                <h2 id="question-text" class="question-title">질문 내용이 여기에 들어갑니다.</h2>
+                
+                <!-- 선택지 버튼 2개 -->
+                <div class="options-container">
+                    <button class="option-btn" data-choice="A" id="btn-option-a">
+                        <span class="option-tag">A</span>
+                        <span class="option-label" id="text-option-a">선택지 A 내용</span>
+                    </button>
+                    <button class="option-btn" data-choice="B" id="btn-option-b">
+                        <span class="option-tag">B</span>
+                        <span class="option-label" id="text-option-b">선택지 B 내용</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. AI 분석 중 로딩 화면 (초기에는 숨김) -->
+        <section id="loading-section" class="card text-center fade-in hidden">
+            <div class="spinner"></div>
+            <h2 class="loading-title">AI가 성향을 분석하고 있습니다</h2>
+            <p class="loading-desc">
+                선택하신 지표를 바탕으로 맞춤형 활동과<br>
+                실시간 검색 정보를 큐레이션 중입니다. 잠시만 기다려 주세요!
+            </p>
+        </section>
+
+        <!-- 4. 결과(Result) 화면 (초기에는 숨김) -->
+        <section id="result-section" class="card fade-in hidden">
+            <div class="result-header text-center">
+                <span class="disclaimer-badge" id="res-disclaimer">MBTI는 참고용 지표입니다</span>
+                <h1 class="result-mbti" id="res-mbti">ENFP</h1>
+                <h3 class="result-character" id="res-character">다정한 열정 기획자</h3>
+                <p class="result-summary" id="res-summary">성향 요약 설명문이 들어갑니다.</p>
+            </div>
+
+            <!-- 성향 4대 지표 세부 퍼센트(%) 바 영역 -->
+            <div class="spectrum-section">
+                <h3 class="sub-title">📊 나의 세부 성향 스펙트럼</h3>
+                
+                <!-- E vs I -->
+                <div class="spectrum-item">
+                    <div class="spectrum-labels">
+                        <span>외향형 (E) <strong id="score-e">50%</strong></span>
+                        <span>내향형 (I) <strong id="score-i">50%</strong></span>
+                    </div>
+                    <div class="spectrum-bar-bg">
+                        <div id="bar-ei" class="spectrum-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- S vs N -->
+                <div class="spectrum-item">
+                    <div class="spectrum-labels">
+                        <span>감각형 (S) <strong id="score-s">50%</strong></span>
+                        <span>직관형 (N) <strong id="score-n">50%</strong></span>
+                    </div>
+                    <div class="spectrum-bar-bg">
+                        <div id="bar-sn" class="spectrum-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- T vs F -->
+                <div class="spectrum-item">
+                    <div class="spectrum-labels">
+                        <span>사고형 (T) <strong id="score-t">50%</strong></span>
+                        <span>감정형 (F) <strong id="score-f">50%</strong></span>
+                    </div>
+                    <div class="spectrum-bar-bg">
+                        <div id="bar-tf" class="spectrum-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- J vs P -->
+                <div class="spectrum-item">
+                    <div class="spectrum-labels">
+                        <span>판단형 (J) <strong id="score-j">50%</strong></span>
+                        <span>인식형 (P) <strong id="score-p">50%</strong></span>
+                    </div>
+                    <div class="spectrum-bar-bg">
+                        <div id="bar-jp" class="spectrum-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI 추천 활동 카드 리스트 -->
+            <div class="activities-section">
+                <h3 class="sub-title">✨ AI 맞춤 추천 활동</h3>
+                <div id="activities-list" class="activities-grid">
+                    <!-- 자바스크립트로 추천 활동 카드가 동적으로 채워집니다 -->
+                </div>
+            </div>
+
+            <!-- 실시간 검색 보강 정보 영역 -->
+            <div id="search-section" class="search-section hidden">
+                <h3 class="sub-title">🔍 관련 추천 검색 팁</h3>
+                <p class="search-keyword-info">추천 검색어: <strong id="search-keyword-text"></strong></p>
+                <div id="search-results-list" class="search-results-list">
+                    <!-- 구글 실시간 검색 결과 링크가 채워집니다 -->
+                </div>
+            </div>
+
+            <!-- 하단 버튼 영역 -->
+            <div class="action-buttons">
+                <button id="btn-copy-result" class="btn-secondary">📋 결과 요약 복사하기</button>
+                <button id="btn-restart" class="btn-primary">🔄 테스트 다시하기</button>
+            </div>
+        </section>
+
+        <!-- 하단 푸터 -->
+        <footer class="app-footer">
+            <p>© 2026 AI MBTI Recommender • Powered by Gemini & Serper</p>
+        </footer>
+    </div>
+
+    <!-- 외부 스크립트 연결 -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
