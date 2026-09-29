@@ -340,11 +340,63 @@ body {
     margin-bottom: 6px;
 }
 
-.result-character {
-    font-size: 1.35rem;
-    color: #384f40;
-    margin-bottom: 16px;
+/* MBTI 맞춤형 캐릭터 카드 디자인 */
+.character-card {
+    background: linear-gradient(145deg, #f5faf7 0%, #edf5f0 100%);
+    border: 1.5px solid #d8eade;
+    border-radius: 18px;
+    padding: 22px 18px;
+    margin: 14px auto 22px auto;
+    max-width: 440px;
+    box-shadow: 0 4px 16px rgba(45, 90, 60, 0.06);
+    text-align: center;
+}
+
+.character-avatar {
+    font-size: 3.6rem;
+    line-height: 1;
+    margin-bottom: 12px;
+    display: inline-block;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
+    animation: gentleBounce 2.5s ease-in-out infinite;
+}
+
+@keyframes gentleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.character-name {
+    font-size: 1.38rem;
+    font-weight: 700;
+    color: #1f452e;
+    margin-bottom: 6px;
+    letter-spacing: -0.4px;
+}
+
+.character-slogan {
+    font-size: 0.95rem;
+    color: #51715e;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.character-tags {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.char-tag {
+    background-color: #ffffff;
+    color: #2d6343;
+    font-size: 0.8rem;
     font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid #d0e4d7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .result-summary {

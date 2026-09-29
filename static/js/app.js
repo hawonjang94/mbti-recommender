@@ -238,12 +238,52 @@ async function finishQuiz() {
     }
 }
 
+// 16가지 MBTI 맞춤형 캐릭터 데이터베이스
+const mbtiCharacters = {
+    INTJ: { avatar: "🦉", name: "전략가 올빼미", slogan: "깊은 숲속의 지혜로운 설계자", tags: ["#치밀한전략", "#지적호기심", "#독립적"] },
+    INTP: { avatar: "🐱", name: "호기심 철학 고양이", slogan: "자유로운 사색과 탐구의 마법사", tags: ["#논리분석", "#독창적아이디어", "#자유영혼"] },
+    ENTJ: { avatar: "🦁", name: "당당한 비전 사자", slogan: "목표를 향해 거침없이 나아가는 리더", tags: ["#강력한추진력", "#전략적리더", "#결단력"] },
+    ENTP: { avatar: "🦊", name: "기발한 발명가 여우", slogan: "세상을 흔드는 반짝이는 아이디어뱅크", tags: ["#유쾌한도전", "#창의적스파크", "#변화추구"] },
+    INFJ: { avatar: "🦌", name: "신비로운 숲 사슴", slogan: "내면의 평화와 통찰을 그리는 조언자", tags: ["#깊은통찰", "#따뜻한이상", "#진정성"] },
+    INFP: { avatar: "🐰", name: "꿈꾸는 감성 토끼", slogan: "동화 같은 상상과 온기를 품은 몽상가", tags: ["#감성에너지", "#낭만주의", "#따스한위로"] },
+    ENFJ: { avatar: "🐬", name: "빛나는 멘토 돌고래", slogan: "모두의 마음을 잇는 따뜻한 소통가", tags: ["#선한영향력", "#공감과격려", "#화합의빛"] },
+    ENFP: { avatar: "🐶", name: "활기찬 비타민 강아지", slogan: "세상을 밝히는 열정적인 행복 전도사", tags: ["#무한긍정", "#넘치는열정", "#친화력만렙"] },
+    ISTJ: { avatar: "🐢", name: "신뢰의 수호 거북이", slogan: "약속과 원칙을 단단히 지키는 기둥", tags: ["#묵묵한성실", "#믿음직한책임", "#정확함"] },
+    ISFJ: { avatar: "🦔", name: "다정한 수호 고슴도치", slogan: "소중한 사람들을 조용히 품어주는 온기", tags: ["#섬세한배려", "#따뜻한헌신", "#마음지킴이"] },
+    ESTJ: { avatar: "🦅", name: "유능한 지휘관 매", slogan: "빈틈없이 일상을 가꾸는 최고의 총괄자", tags: ["#완벽한체계", "#현실적해결", "#정확한실행"] },
+    ESFJ: { avatar: "🐿️", name: "정 많은 행복 다람쥐", slogan: "주변 사람들을 살뜰히 챙기는 친선대사", tags: ["#다정한친화력", "#분위기메이커", "#따스한마음"] },
+    ISTP: { avatar: "🐆", name: "고요한 장인 흑표범", slogan: "위기 속에서 침착하게 빛나는 만능 재주꾼", tags: ["#문제해결사", "#침착한관찰", "#실용적손재주"] },
+    ISFP: { avatar: "🐨", name: "평화로운 예술가 코알라", slogan: "오감을 음미하며 삶을 예술로 빚는 자유인", tags: ["#여유로운감성", "#순수한자연", "#온화한매력"] },
+    ESTP: { avatar: "🐯", name: "에너자이저 모험 호랑이", slogan: "짜릿한 도전을 즐기는 타고난 개척자", tags: ["#짜릿한행동력", "#순발력최강", "#현실감각"] },
+    ESFP: { avatar: "🦩", name: "축제의 주인공 홍학", slogan: "매 순간을 반짝이는 무대로 만드는 연예인", tags: ["#인간비타민", "#즉흥의즐거움", "#매력만점"] }
+};
+
 // 8. 결과 화면 렌더링
 function renderResults(mbti, scores, aiData, searchData) {
     document.getElementById("res-mbti").textContent = mbti;
     document.getElementById("res-disclaimer").textContent = aiData.disclaimer || "MBTI는 참고용 지표입니다";
-    document.getElementById("res-character").textContent = aiData.character_title || `${mbti} 라이프스타일러`;
     document.getElementById("res-summary").textContent = aiData.summary || "";
+
+    // MBTI 맞춤형 캐릭터 데이터 바인딩
+    const char = mbtiCharacters[mbti] || {
+        avatar: "🌿",
+        name: `${mbti} 라이프스타일러`,
+        slogan: "자신만의 멋진 방식으로 일상을 가꾸는 탐험가",
+        tags: ["#나다운선택", "#성향맞춤", "#라이프스타일"]
+    };
+
+    document.getElementById("char-avatar").textContent = char.avatar;
+    document.getElementById("char-name").textContent = char.name;
+    document.getElementById("char-slogan").textContent = `"${char.slogan}"`;
+
+    const charTagsContainer = document.getElementById("char-tags");
+    charTagsContainer.innerHTML = "";
+    char.tags.forEach(tag => {
+        const span = document.createElement("span");
+        span.className = "char-tag";
+        span.textContent = tag;
+        charTagsContainer.appendChild(span);
+    });
 
     // 4대 지표 퍼센트 텍스트 및 프로그레스 바 적용
     document.getElementById("score-e").textContent = `${scores.E}%`;
@@ -350,7 +390,9 @@ function renderFallbackResults(mbti, scores) {
 // 10. 결과 텍스트 복사 기능
 function copyResultText() {
     const mbti = document.getElementById("res-mbti").textContent;
-    const character = document.getElementById("res-character").textContent;
+    const charAvatar = document.getElementById("char-avatar").textContent;
+    const charName = document.getElementById("char-name").textContent;
+    const charSlogan = document.getElementById("char-slogan").textContent;
     const summary = document.getElementById("res-summary").textContent;
     const scoreE = document.getElementById("tbl-score-e").textContent;
     const scoreI = document.getElementById("tbl-score-i").textContent;
@@ -362,7 +404,8 @@ function copyResultText() {
     const scoreP = document.getElementById("tbl-score-p").textContent;
 
     const copyString = `[🌿 Mind & Act - AI MBTI 성향 & 활동 큐레이션]
-유형: ${mbti} (${character})
+유형: ${mbti} ${charAvatar} ${charName}
+한줄평: ${charSlogan}
 요약: ${summary}
 
 📊 세부 지표 비율:

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 성향 분석 & 맞춤 활동 큐레이터</title>
     <!-- 외부 스타일시트 연결 (캐시 버스팅 적용) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=4">
     <!-- 깔끔한 구글 웹폰트(Pretendard 대체용 Noto Sans KR) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,7 +80,19 @@
             <div class="result-header text-center">
                 <span class="disclaimer-badge" id="res-disclaimer">MBTI는 참고용 지표입니다</span>
                 <h1 class="result-mbti" id="res-mbti">ENFP</h1>
-                <h3 class="result-character" id="res-character">다정한 열정 기획자</h3>
+
+                <!-- MBTI 맞춤형 캐릭터 카드 -->
+                <div class="character-card">
+                    <div class="character-avatar" id="char-avatar">🐶</div>
+                    <h2 class="character-name" id="char-name">활기찬 비타민 강아지</h2>
+                    <p class="character-slogan" id="char-slogan">"세상을 밝히는 따뜻한 열정 전도사"</p>
+                    <div class="character-tags" id="char-tags">
+                        <span class="char-tag">#비타민</span>
+                        <span class="char-tag">#열정</span>
+                        <span class="char-tag">#친화력</span>
+                    </div>
+                </div>
+
                 <p class="result-summary" id="res-summary">성향 요약 설명문이 들어갑니다.</p>
             </div>
 
