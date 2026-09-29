@@ -1,0 +1,24 @@
+{
+  "name": "Mind & Act - AI 성향 분석 & 맞춤 큐레이터",
+  "short_name": "Mind & Act",
+  "description": "15개 일상 질문으로 알아보는 MBTI 성향 스펙트럼과 Gemini AI 맞춤 활동 큐레이션",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f7f4",
+  "theme_color": "#325e45",
+  "icons": [
+    {
+      "src": "/static/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

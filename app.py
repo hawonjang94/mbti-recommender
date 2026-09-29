@@ -2,7 +2,7 @@ import os
 import json
 import logging
 import requests
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from dotenv import load_dotenv
 import google.generativeai as genai
 
@@ -78,6 +78,18 @@ def search_serper(query):
 def index():
     """메인 화면(HTML)을 보여주는 라우트"""
     return render_template("index.html")
+
+
+@app.route("/sw.js")
+def service_worker():
+    """PWA 서비스 워커 파일 제공 라우트"""
+    return send_from_directory("static", "sw.js", mimetype="application/javascript")
+
+
+@app.route("/manifest.json")
+def manifest():
+    """PWA 매니페스트 파일 제공 라우트"""
+    return send_from_directory("static", "manifest.json", mimetype="application/json")
 
 
 @app.route("/recommend", methods=["POST"])
