@@ -261,8 +261,8 @@ const mbtiCharacters = {
 // 8. 결과 화면 렌더링
 function renderResults(mbti, scores, aiData, searchData) {
     document.getElementById("res-mbti").textContent = mbti;
-    document.getElementById("res-disclaimer").textContent = aiData.disclaimer || "MBTI는 참고용 지표입니다";
-    document.getElementById("res-summary").textContent = aiData.summary || "";
+    const resDiscEl = document.getElementById("res-disclaimer");
+    if (resDiscEl) resDiscEl.textContent = aiData.disclaimer || "MBTI는 참고용 지표입니다";
 
     // MBTI 맞춤형 캐릭터 데이터 바인딩
     const char = mbtiCharacters[mbti] || {
@@ -271,6 +271,10 @@ function renderResults(mbti, scores, aiData, searchData) {
         slogan: "자신만의 멋진 방식으로 일상을 가꾸는 탐험가",
         tags: ["#나다운선택", "#성향맞춤", "#라이프스타일"]
     };
+
+    document.getElementById("res-summary").textContent = aiData.summary || "";
+    const resCharEl = document.getElementById("res-character");
+    if (resCharEl) resCharEl.textContent = char.name;
 
     document.getElementById("char-avatar").textContent = char.avatar;
     document.getElementById("char-name").textContent = char.name;

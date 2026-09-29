@@ -82,6 +82,7 @@
                 <h1 class="result-mbti" id="res-mbti">ENFP</h1>
 
                 <!-- MBTI 맞춤형 캐릭터 카드 -->
+                <h3 class="hidden" id="res-character"></h3>
                 <div class="character-card">
                     <div class="character-avatar" id="char-avatar">🐶</div>
                     <h2 class="character-name" id="char-name">활기찬 비타민 강아지</h2>
@@ -218,7 +219,7 @@
         </footer>
     </div>
 
-    <!-- 외부 스크립트 연결 -->
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <!-- 외부 스크립트 연결 (캐시 버스팅 적용) -->
+    <script src="{{ url_for('static', filename='js/app.js') }}?v=4"></script>
 </body>
 </html>
