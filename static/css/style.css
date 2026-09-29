@@ -1,4 +1,9 @@
-/* 기본 리셋 및 전역 스타일 */
+/* ========================================================
+   🌿 Mind & Act - 힐링 세이지/포레스트 그린 테마 스타일시트
+   마음이 편안해지는 자연주의 허브 & 포레스트 감성 디자인
+   ======================================================== */
+
+/* 1. 기본 리셋 및 전역 스타일 */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,17 +12,17 @@
 
 body {
     font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f4f7f6;
-    color: #333333;
-    line-height: 1.6;
-    padding: 20px 10px;
+    background: linear-gradient(180deg, #f3f7f4 0%, #eaf1ed 100%);
+    color: #2d3732;
+    line-height: 1.65;
+    padding: 30px 14px;
+    min-height: 100vh;
 }
 
 /* 앱 전체 중앙 컨테이너 */
 .app-container {
-    max-width: 680px;
+    max-width: 640px;
     margin: 0 auto;
-    padding: 10px;
 }
 
 /* 상단 헤더 */
@@ -26,31 +31,37 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid #dbe6df;
 }
 
 .logo {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: #2b6cb0;
+    color: #264e36;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .header-tag {
-    font-size: 0.85rem;
-    background-color: #ebf8fa;
-    color: #319795;
-    padding: 4px 10px;
+    font-size: 0.82rem;
+    background-color: #e5f0ea;
+    color: #2d6346;
+    padding: 5px 12px;
     border-radius: 20px;
-    font-weight: 500;
+    font-weight: 600;
+    border: 1px solid #cce2d6;
 }
 
 /* 카드 기본 컨테이너 */
 .card {
     background: #ffffff;
-    border-radius: 16px;
-    padding: 32px 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 36px 28px;
+    box-shadow: 0 10px 30px rgba(38, 78, 54, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #edf3ef;
     margin-bottom: 24px;
     transition: all 0.3s ease;
 }
@@ -61,13 +72,13 @@ body {
 }
 
 .fade-in {
-    animation: fadeIn 0.4s ease-in-out;
+    animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px);
     }
     to {
         opacity: 1;
@@ -79,87 +90,102 @@ body {
     text-align: center;
 }
 
-/* 1. 시작 화면 스타일 */
+/* ========================================================
+   2. 시작(Intro) 화면 스타일
+   ======================================================== */
 .intro-badge {
     display: inline-block;
-    background-color: #e2e8f0;
-    color: #4a5568;
+    background-color: #edf5f0;
+    color: #3b7352;
     font-size: 0.85rem;
-    padding: 4px 12px;
-    border-radius: 12px;
+    padding: 6px 14px;
+    border-radius: 14px;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    border: 1px solid #d5e7dc;
 }
 
 .main-title {
-    font-size: 1.85rem;
-    color: #1a202c;
+    font-size: 1.95rem;
+    color: #1e3a29;
     margin-bottom: 16px;
-    line-height: 1.3;
+    line-height: 1.35;
+    letter-spacing: -0.8px;
+    font-weight: 700;
 }
 
 .main-desc {
     font-size: 1.05rem;
-    color: #4a5568;
-    margin-bottom: 24px;
+    color: #516457;
+    margin-bottom: 26px;
+    line-height: 1.7;
 }
 
 .notice-box {
-    background-color: #fffaf0;
-    border-left: 4px solid #dd6b20;
-    padding: 14px 16px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: #7b341e;
-    margin-bottom: 30px;
-    line-height: 1.5;
+    background-color: #f7faf8;
+    border-left: 4px solid #5a9472;
+    padding: 15px 18px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: #3e5a47;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    border-top: 1px solid #eef4f0;
+    border-right: 1px solid #eef4f0;
+    border-bottom: 1px solid #eef4f0;
 }
 
-/* 버튼 기본 스타일 */
+/* 버튼 스타일 (자연스러운 딥 세이지 그린) */
 .btn-primary {
     display: block;
     width: 100%;
-    background-color: #3182ce;
+    background: linear-gradient(135deg, #44795b 0%, #325e45 100%);
     color: #ffffff;
-    font-size: 1.1rem;
+    font-size: 1.12rem;
     font-weight: 600;
-    padding: 16px 20px;
+    padding: 17px 22px;
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 14px rgba(50, 94, 69, 0.25);
+    transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
-    background-color: #2b6cb0;
+    background: linear-gradient(135deg, #3a684e 0%, #284c37 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(50, 94, 69, 0.32);
 }
 
 .btn-primary:active {
-    transform: scale(0.99);
+    transform: translateY(0);
 }
 
 .btn-secondary {
     display: block;
     width: 100%;
-    background-color: #edf2f7;
-    color: #2d3748;
+    background-color: #f1f6f3;
+    color: #2e4d3a;
     font-size: 1rem;
     font-weight: 600;
-    padding: 14px 20px;
-    border: 1px solid #cbd5e0;
-    border-radius: 12px;
+    padding: 15px 20px;
+    border: 1px solid #d4e3da;
+    border-radius: 14px;
     cursor: pointer;
-    transition: background-color 0.2s;
-    margin-bottom: 12px;
+    transition: all 0.2s ease;
+    margin-bottom: 14px;
 }
 
 .btn-secondary:hover {
-    background-color: #e2e8f0;
+    background-color: #e5efe9;
+    border-color: #bed6c7;
 }
 
-/* 2. 질문 화면 & 상단 진행률 프로그레스 바 */
+/* ========================================================
+   3. 질문 화면 & 상단 진행률 프로그레스 바
+   ======================================================== */
 .progress-container {
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
 .progress-info {
@@ -167,103 +193,109 @@ body {
     justify-content: space-between;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #718096;
-    margin-bottom: 8px;
+    color: #637a6b;
+    margin-bottom: 10px;
 }
 
 .progress-bar-bg {
     width: 100%;
     height: 10px;
-    background-color: #edf2f7;
+    background-color: #e5ece8;
     border-radius: 10px;
     overflow: hidden;
 }
 
 .progress-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, #3182ce, #63b3ed);
+    background: linear-gradient(90deg, #6bb38a 0%, #3e7354 100%);
     border-radius: 10px;
-    transition: width 0.3s ease;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .category-badge {
     display: inline-block;
-    background-color: #ebf8fa;
-    color: #319795;
-    font-size: 0.8rem;
+    background-color: #e8f3ed;
+    color: #2f6547;
+    font-size: 0.82rem;
     font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
-    margin-bottom: 12px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    border: 1px solid #d3e7dc;
 }
 
 .question-title {
-    font-size: 1.35rem;
-    color: #2d3748;
-    margin-bottom: 24px;
-    line-height: 1.4;
+    font-size: 1.38rem;
+    color: #1e3827;
+    margin-bottom: 26px;
+    line-height: 1.45;
     min-height: 60px;
+    font-weight: 600;
 }
 
 /* 선택지 버튼 디자인 */
 .options-container {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 15px;
 }
 
 .option-btn {
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 16px 20px;
+    border: 2px solid #e1ebe5;
+    border-radius: 15px;
+    padding: 18px 22px;
     text-align: left;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.22s ease;
 }
 
 .option-btn:hover {
-    border-color: #3182ce;
-    background-color: #f7fafc;
+    border-color: #4f8766;
+    background-color: #f7faf8;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.1);
+    box-shadow: 0 6px 16px rgba(62, 115, 84, 0.1);
 }
 
 .option-tag {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 32px;
-    height: 32px;
-    background-color: #edf2f7;
-    color: #4a5568;
+    width: 34px;
+    height: 34px;
+    background-color: #eef5f1;
+    color: #3b6b4f;
     font-weight: 700;
-    border-radius: 8px;
-    margin-right: 14px;
+    border-radius: 10px;
+    margin-right: 16px;
     flex-shrink: 0;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
 }
 
 .option-btn:hover .option-tag {
-    background-color: #3182ce;
+    background-color: #3e7354;
     color: #ffffff;
 }
 
 .option-label {
     font-size: 1.02rem;
-    color: #2d3748;
-    line-height: 1.4;
+    color: #2b3a31;
+    line-height: 1.45;
 }
 
-/* 3. 로딩 애니메이션 스피너 */
+/* ========================================================
+   4. 로딩 애니메이션 스피너 (포레스트 힐링 톤)
+   ======================================================== */
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #edf2f7;
-    border-top: 5px solid #3182ce;
+    width: 52px;
+    height: 52px;
+    border: 5px solid #e2ece6;
+    border-top: 5px solid #3e7354;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
     margin: 40px auto 24px auto;
 }
 
@@ -274,61 +306,74 @@ body {
 
 .loading-title {
     font-size: 1.35rem;
-    color: #2d3748;
+    color: #1f3b2a;
     margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .loading-desc {
-    color: #718096;
-    font-size: 0.95rem;
+    color: #637a6b;
+    font-size: 0.96rem;
+    line-height: 1.6;
 }
 
-/* 4. 결과 화면 */
+/* ========================================================
+   5. 결과(Result) 화면 스타일
+   ======================================================== */
 .disclaimer-badge {
     display: inline-block;
-    background-color: #feebc8;
-    color: #9c4221;
+    background-color: #edf5f0;
+    color: #336647;
     font-size: 0.85rem;
     font-weight: 600;
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #d4e7db;
 }
 
 .result-mbti {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 800;
-    color: #2b6cb0;
+    color: #255438;
     letter-spacing: 2px;
     margin-bottom: 6px;
 }
 
 .result-character {
     font-size: 1.35rem;
-    color: #2d3748;
+    color: #384f40;
     margin-bottom: 16px;
+    font-weight: 600;
 }
 
 .result-summary {
-    font-size: 1rem;
-    color: #4a5568;
-    line-height: 1.6;
-    margin-bottom: 28px;
+    font-size: 1.02rem;
+    color: #4b6152;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    background: #f8faf8;
+    padding: 16px 20px;
+    border-radius: 12px;
 }
 
 /* 성향 4대 지표 백분율(%) 스펙트럼 프로그레스 바 */
 .spectrum-section {
-    background-color: #f7fafc;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 30px;
+    background-color: #f7faf8;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 32px;
+    border: 1px solid #e8efe9;
 }
 
 .sub-title {
-    font-size: 1.15rem;
-    color: #2d3748;
-    margin-bottom: 16px;
+    font-size: 1.18rem;
+    color: #1f3a29;
+    margin-bottom: 18px;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .spectrum-item {
@@ -343,30 +388,34 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 0.88rem;
-    color: #4a5568;
-    margin-bottom: 6px;
+    color: #4b6353;
+    margin-bottom: 7px;
+    font-weight: 500;
+}
+
+.spectrum-labels strong {
+    color: #264e36;
 }
 
 .spectrum-bar-bg {
     width: 100%;
     height: 12px;
-    background-color: #e2e8f0;
-    border-radius: 8px;
+    background-color: #e2ece6;
+    border-radius: 10px;
     overflow: hidden;
-    position: relative;
 }
 
 .spectrum-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, #4299e1, #48bb78);
-    border-radius: 8px;
-    transition: width 0.6s ease;
+    background: linear-gradient(90deg, #4fa377 0%, #306b49 100%);
+    border-radius: 10px;
+    transition: width 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
     width: 50%;
 }
 
 /* AI 추천 활동 카드 리스트 */
 .activities-section {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 .activities-grid {
@@ -376,89 +425,109 @@ body {
 }
 
 .activity-card {
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 18px 20px;
+    border: 1px solid #e1ede5;
+    border-radius: 16px;
+    padding: 20px 22px;
     background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 14px rgba(34, 69, 48, 0.03);
+    transition: transform 0.2s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-2px);
+    border-color: #bed8c7;
 }
 
 .activity-name {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: #2c5282;
+    color: #245237;
     margin-bottom: 8px;
 }
 
 .activity-reason {
     font-size: 0.95rem;
-    color: #4a5568;
-    margin-bottom: 10px;
+    color: #4d6354;
+    margin-bottom: 12px;
+    line-height: 1.6;
 }
 
 .activity-tip {
-    font-size: 0.85rem;
-    background-color: #ebf8fa;
-    color: #234e52;
-    padding: 8px 12px;
-    border-radius: 6px;
-    line-height: 1.4;
+    font-size: 0.88rem;
+    background-color: #f1f7f3;
+    color: #2b543b;
+    padding: 10px 14px;
+    border-radius: 8px;
+    line-height: 1.5;
+    border: 1px solid #dcebe1;
 }
 
 /* 실시간 검색 결과 영역 */
 .search-section {
-    background-color: #f7fafc;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 30px;
+    background-color: #f7faf8;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 32px;
+    border: 1px solid #e8efe9;
 }
 
 .search-keyword-info {
-    font-size: 0.9rem;
-    color: #718096;
-    margin-bottom: 12px;
+    font-size: 0.92rem;
+    color: #5c7565;
+    margin-bottom: 14px;
+}
+
+.search-keyword-info strong {
+    color: #204d33;
 }
 
 .search-results-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .search-item {
     background: #ffffff;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid #e1ece5;
+    transition: border-color 0.2s;
+}
+
+.search-item:hover {
+    border-color: #5a9472;
 }
 
 .search-item a {
-    color: #2b6cb0;
+    color: #28593c;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
 }
 
 .search-item a:hover {
     text-decoration: underline;
+    color: #1a422a;
 }
 
 .search-snippet {
-    font-size: 0.85rem;
-    color: #718096;
-    margin-top: 4px;
+    font-size: 0.86rem;
+    color: #697d70;
+    margin-top: 5px;
+    line-height: 1.5;
 }
 
-/* 하단 버튼 */
+/* 하단 액션 버튼 */
 .action-buttons {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 /* 하단 푸터 */
 .app-footer {
     text-align: center;
-    font-size: 0.8rem;
-    color: #a0aec0;
-    margin-top: 30px;
+    font-size: 0.82rem;
+    color: #7b9484;
+    margin-top: 36px;
     padding: 10px 0;
 }
