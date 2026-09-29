@@ -262,6 +262,23 @@ function renderResults(mbti, scores, aiData, searchData) {
     document.getElementById("score-p").textContent = `${scores.P}%`;
     document.getElementById("bar-jp").style.width = `${scores.J}%`;
 
+    // 4대 지표 상세 요약표(Table) 데이터 채우기
+    document.getElementById("tbl-score-e").textContent = `${scores.E}%`;
+    document.getElementById("tbl-score-i").textContent = `${scores.I}%`;
+    document.getElementById("tbl-dominant-ei").textContent = scores.E >= scores.I ? `외향형 (E, ${scores.E}%)` : `내향형 (I, ${scores.I}%)`;
+
+    document.getElementById("tbl-score-s").textContent = `${scores.S}%`;
+    document.getElementById("tbl-score-n").textContent = `${scores.N}%`;
+    document.getElementById("tbl-dominant-sn").textContent = scores.S >= scores.N ? `감각형 (S, ${scores.S}%)` : `직관형 (N, ${scores.N}%)`;
+
+    document.getElementById("tbl-score-t").textContent = `${scores.T}%`;
+    document.getElementById("tbl-score-f").textContent = `${scores.F}%`;
+    document.getElementById("tbl-dominant-tf").textContent = scores.T >= scores.F ? `사고형 (T, ${scores.T}%)` : `감정형 (F, ${scores.F}%)`;
+
+    document.getElementById("tbl-score-j").textContent = `${scores.J}%`;
+    document.getElementById("tbl-score-p").textContent = `${scores.P}%`;
+    document.getElementById("tbl-dominant-jp").textContent = scores.J >= scores.P ? `판단형 (J, ${scores.J}%)` : `인식형 (P, ${scores.P}%)`;
+
     // AI 추천 활동 카드 리스트 생성
     const activitiesList = document.getElementById("activities-list");
     activitiesList.innerHTML = "";
@@ -335,8 +352,26 @@ function copyResultText() {
     const mbti = document.getElementById("res-mbti").textContent;
     const character = document.getElementById("res-character").textContent;
     const summary = document.getElementById("res-summary").textContent;
+    const scoreE = document.getElementById("tbl-score-e").textContent;
+    const scoreI = document.getElementById("tbl-score-i").textContent;
+    const scoreS = document.getElementById("tbl-score-s").textContent;
+    const scoreN = document.getElementById("tbl-score-n").textContent;
+    const scoreT = document.getElementById("tbl-score-t").textContent;
+    const scoreF = document.getElementById("tbl-score-f").textContent;
+    const scoreJ = document.getElementById("tbl-score-j").textContent;
+    const scoreP = document.getElementById("tbl-score-p").textContent;
 
-    const copyString = `[AI MBTI 성향 & 활동 큐레이션]\n유형: ${mbti} (${character})\n요약: ${summary}\n\n* 본 결과는 참고용 가이드입니다.`;
+    const copyString = `[🌿 Mind & Act - AI MBTI 성향 & 활동 큐레이션]
+유형: ${mbti} (${character})
+요약: ${summary}
+
+📊 세부 지표 비율:
+- 에너지 방향: 외향(E) ${scoreE} vs 내향(I) ${scoreI}
+- 인식 방식: 감각(S) ${scoreS} vs 직관(N) ${scoreN}
+- 판단 방식: 사고(T) ${scoreT} vs 감정(F) ${scoreF}
+- 생활 양식: 판단(J) ${scoreJ} vs 인식(P) ${scoreP}
+
+* 본 결과는 개인의 선호 경향성을 참고하기 위한 힐링 가이드입니다.`;
 
     navigator.clipboard.writeText(copyString).then(() => {
         alert("결과가 클립보드에 복사되었습니다! 원하는 곳에 붙여넣어 보세요.");

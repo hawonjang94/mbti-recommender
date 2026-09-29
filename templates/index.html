@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 성향 분석 & 맞춤 활동 큐레이터</title>
     <!-- 외부 스타일시트 연결 (캐시 버스팅 적용) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=2">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
     <!-- 깔끔한 구글 웹폰트(Pretendard 대체용 Noto Sans KR) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,6 +130,49 @@
                     <div class="spectrum-bar-bg">
                         <div id="bar-jp" class="spectrum-bar-fill"></div>
                     </div>
+                </div>
+            </div>
+
+            <!-- 4대 지표 세부 퍼센트(%) 한눈에 보는 표 -->
+            <div class="table-section">
+                <h3 class="sub-title">📋 지표별 상세 백분율(%) 요약표</h3>
+                <div class="table-responsive">
+                    <table class="mbti-table">
+                        <thead>
+                            <tr>
+                                <th>지표 영역</th>
+                                <th>성향 A (%)</th>
+                                <th>성향 B (%)</th>
+                                <th>우세 성향</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-category">에너지 방향</td>
+                                <td>외향(E) <strong id="tbl-score-e" class="percent-val">0%</strong></td>
+                                <td>내향(I) <strong id="tbl-score-i" class="percent-val">0%</strong></td>
+                                <td><span id="tbl-dominant-ei" class="dominant-tag">외향형(E)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-category">인식 방식</td>
+                                <td>감각(S) <strong id="tbl-score-s" class="percent-val">0%</strong></td>
+                                <td>직관(N) <strong id="tbl-score-n" class="percent-val">0%</strong></td>
+                                <td><span id="tbl-dominant-sn" class="dominant-tag">직관형(N)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-category">판단 방식</td>
+                                <td>사고(T) <strong id="tbl-score-t" class="percent-val">0%</strong></td>
+                                <td>감정(F) <strong id="tbl-score-f" class="percent-val">0%</strong></td>
+                                <td><span id="tbl-dominant-tf" class="dominant-tag">감정형(F)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-category">생활 양식</td>
+                                <td>판단(J) <strong id="tbl-score-j" class="percent-val">0%</strong></td>
+                                <td>인식(P) <strong id="tbl-score-p" class="percent-val">0%</strong></td>
+                                <td><span id="tbl-dominant-jp" class="dominant-tag">인식형(P)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

@@ -413,6 +413,88 @@ body {
     width: 50%;
 }
 
+/* ========================================================
+   지표별 상세 백분율(%) 요약표 스타일
+   ======================================================== */
+.table-section {
+    background-color: #f7faf8;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 32px;
+    border: 1px solid #e8efe9;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mbti-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 6px;
+    font-size: 0.93rem;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2ebe5;
+}
+
+.mbti-table thead {
+    background-color: #eaf2ed;
+}
+
+.mbti-table th {
+    padding: 12px 10px;
+    font-weight: 700;
+    color: #274f37;
+    font-size: 0.88rem;
+    border-bottom: 1.5px solid #d6e5dc;
+}
+
+.mbti-table td {
+    padding: 13px 10px;
+    border-bottom: 1px solid #edf4ef;
+    color: #435b4c;
+    vertical-align: middle;
+}
+
+.mbti-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.mbti-table tbody tr:hover {
+    background-color: #f8fbf9;
+}
+
+.mbti-table .td-category {
+    font-weight: 600;
+    color: #264e36;
+    background-color: #fbfdfc;
+    border-right: 1px solid #eef5f0;
+}
+
+.percent-val {
+    color: #264e36;
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+.dominant-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #44795b 0%, #306547 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 14px;
+    letter-spacing: -0.3px;
+    box-shadow: 0 2px 6px rgba(48, 101, 71, 0.2);
+}
+
 /* AI 추천 활동 카드 리스트 */
 .activities-section {
     margin-bottom: 32px;
