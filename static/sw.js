@@ -1,9 +1,9 @@
 // 서비스 워커 (Service Worker) - PWA 오프라인 캐싱 및 앱 설치 지원
-const CACHE_NAME = 'mind-act-cache-v1';
+const CACHE_NAME = 'mind-act-cache-v2';
 const ASSETS_TO_CACHE = [
   '/',
-  '/static/css/style.css?v=4',
-  '/static/js/app.js?v=4',
+  '/static/css/style.css?v=5',
+  '/static/js/app.js?v=5',
   '/static/manifest.json',
   '/static/icons/icon-192.png',
   '/static/icons/icon-512.png'
@@ -13,7 +13,9 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
+        console.warn('Some assets failed to cache:', err);
+      });
     }).then(() => self.skipWaiting())
   );
 });
