@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/icon-192.png') }}">
 
     <!-- 외부 스타일시트 연결 (캐시 버스팅 적용) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=9">
     <!-- 깔끔한 구글 웹폰트(Pretendard 대체용 Noto Sans KR) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,14 +30,20 @@
 
         <!-- 0. 암호코드 입력(Gate) 화면 -->
         <section id="gate-section" class="card text-center fade-in">
-            <div class="intro-badge">🔒 비공개 접근 모드</div>
-            <h1 class="main-title">입장 코드 확인</h1>
+            <div class="intro-badge">🌱 비밀 정원 입장</div>
+            <h1 class="main-title">네잎클로버 암호코드</h1>
             <p class="main-desc">
                 Mind & Act 성향 분석 서비스입니다.<br>
-                입장을 위해 부여받으신 <strong>암호코드</strong>를 입력해 주세요.
+                초록 풀잎 네 칸에 <strong>입장 암호 4자리</strong>를 입력해 주세요.
             </p>
             <div class="passcode-box">
-                <input type="password" id="passcode-input" class="passcode-input" placeholder="암호코드 입력" maxlength="20" autocomplete="off">
+                <!-- 초록색 풀잎 모양 네모칸 4개 -->
+                <div class="leaf-pin-container" id="pin-container">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="leaf-pin-input" data-index="0" autocomplete="off">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="leaf-pin-input" data-index="1" autocomplete="off">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="leaf-pin-input" data-index="2" autocomplete="off">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="leaf-pin-input" data-index="3" autocomplete="off">
+                </div>
                 <p id="passcode-error" class="passcode-error hidden">⚠️ 암호코드가 일치하지 않습니다.</p>
                 <button id="btn-unlock" class="btn-primary">입장하기 →</button>
             </div>
@@ -260,7 +266,7 @@
     </div>
 
     <!-- 외부 스크립트 연결 (캐시 버스팅 적용) -->
-    <script src="{{ url_for('static', filename='js/app.js') }}?v=8"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}?v=9"></script>
 
     <!-- PWA 서비스 워커 등록 스크립트 -->
     <script>

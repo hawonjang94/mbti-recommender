@@ -109,7 +109,8 @@ const VALID_PASSCODES = ["2026", "1234"];
 
 // DOM 요소 참조
 const gateSection = document.getElementById("gate-section");
-const passcodeInput = document.getElementById("passcode-input");
+const pinContainer = document.getElementById("pin-container");
+const pinInputs = document.querySelectorAll(".leaf-pin-input");
 const passcodeError = document.getElementById("passcode-error");
 const btnUnlock = document.getElementById("btn-unlock");
 
@@ -142,15 +143,61 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         if (gateSection) gateSection.classList.remove("hidden");
         if (introSection) introSection.classList.add("hidden");
-        if (passcodeInput) passcodeInput.focus();
+        if (pinInputs.length > 0) pinInputs[0].focus();
     }
 
-    if (btnUnlock) btnUnlock.addEventListener("click", handleUnlock);
-    if (passcodeInput) {
-        passcodeInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") handleUnlock();
+    // 4개 풀잎 PIN 입력칸 인터랙션 (자동 넘김 및 백스페이스)
+    pinInputs.forEach((input, idx) => {
+        // 숫자 입력 시 다음 칸 자동 이동
+        input.addEventListener("input", (e) => {
+            const val = e.target.value.replace(/[^0-9]/g, '');
+            e.target.value = val;
+
+            if (val) {
+                input.classList.add("filled");
+                if (idx < pinInputs.length - 1) {
+                    pinInputs[idx + 1].focus();
+                } else {
+                    // 4자리 모두 입력 완료 시 자동 확인
+                    handleUnlock();
+                }
+            } else {
+                input.classList.remove("filled");
+            }
         });
-    }
+
+        // 백스페이스 및 키보드 이동
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && !input.value && idx > 0) {
+                pinInputs[idx - 1].focus();
+                pinInputs[idx - 1].value = "";
+                pinInputs[idx - 1].classList.remove("filled");
+            } else if (e.key === "Enter") {
+                handleUnlock();
+            }
+        });
+
+        // 붙여넣기(Paste) 지원
+        input.addEventListener("paste", (e) => {
+            e.preventDefault();
+            const pasteData = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '');
+            if (pasteData) {
+                pasteData.split('').slice(0, 4).forEach((char, i) => {
+                    if (pinInputs[i]) {
+                        pinInputs[i].value = char;
+                        pinInputs[i].classList.add("filled");
+                    }
+                });
+                if (pasteData.length >= 4) {
+                    handleUnlock();
+                } else if (pinInputs[pasteData.length]) {
+                    pinInputs[pasteData.length].focus();
+                }
+            }
+        });
+    });
+
+    if (btnUnlock) btnUnlock.addEventListener("click", handleUnlock);
 
     btnStart.addEventListener("click", startQuiz);
     btnOptionA.addEventListener("click", () => handleAnswer("A"));
@@ -161,17 +208,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 암호코드 검증 함수
 function handleUnlock() {
-    const entered = passcodeInput.value.trim();
+    const entered = Array.from(pinInputs).map(i => i.value).join("").trim();
     if (VALID_PASSCODES.includes(entered)) {
         sessionStorage.setItem("mbti_unlocked", "true");
-        passcodeError.classList.add("hidden");
-        gateSection.classList.add("hidden");
-        introSection.classList.remove("hidden");
+        if (passcodeError) passcodeError.classList.add("hidden");
+        if (gateSection) gateSection.classList.add("hidden");
+        if (introSection) introSection.classList.remove("hidden");
     } else {
-        passcodeError.classList.remove("hidden");
-        passcodeInput.classList.add("shake");
-        setTimeout(() => passcodeInput.classList.remove("shake"), 350);
-        passcodeInput.focus();
+        if (passcodeError) passcodeError.classList.remove("hidden");
+        if (pinContainer) {
+            pinContainer.classList.add("shake");
+            setTimeout(() => pinContainer.classList.remove("shake"), 350);
+        }
+        // 칸 비우고 첫 번째 칸으로 재포커스
+        pinInputs.forEach(i => {
+            i.value = "";
+            i.classList.remove("filled");
+        });
+        if (pinInputs.length > 0) pinInputs[0].focus();
     }
 }
 

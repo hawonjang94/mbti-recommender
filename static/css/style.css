@@ -103,32 +103,69 @@ body {
     gap: 12px;
 }
 
-.passcode-input {
-    width: 100%;
-    padding: 13px 16px;
-    font-size: 1.15rem;
-    text-align: center;
-    letter-spacing: 4px;
-    border: 2px solid #cce2d6;
-    border-radius: 12px;
-    background-color: #f7faf8;
-    color: #264e36;
-    font-weight: 700;
-    outline: none;
-    transition: all 0.2s ease;
+/* 초록색 풀잎 모양 암호코드 4개 입력칸 스타일 */
+.leaf-pin-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px auto 8px auto;
 }
 
-.passcode-input:focus {
-    border-color: #3e7354;
+.leaf-pin-input {
+    width: 58px;
+    height: 68px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-align: center;
+    color: #1e452e;
+    background: linear-gradient(145deg, #f3f9f5 0%, #e1efe6 100%);
+    border: 2px solid #a8d5b8;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(36, 80, 52, 0.08);
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -webkit-appearance: none;
+}
+
+/* 4장의 풀잎이 네잎클로버처럼 어우러지도록 개별 풀잎 모서리 실루엣 적용 */
+.leaf-pin-input:nth-child(1) {
+    border-radius: 28px 8px 28px 8px;
+    transform: rotate(-2deg);
+}
+
+.leaf-pin-input:nth-child(2) {
+    border-radius: 8px 28px 8px 28px;
+    transform: rotate(2deg);
+}
+
+.leaf-pin-input:nth-child(3) {
+    border-radius: 28px 8px 28px 8px;
+    transform: rotate(-2deg);
+}
+
+.leaf-pin-input:nth-child(4) {
+    border-radius: 8px 28px 8px 28px;
+    transform: rotate(2deg);
+}
+
+/* 풀잎 포커스(선택) 시 생동감 넘치는 연출 */
+.leaf-pin-input:focus {
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(62, 115, 84, 0.15);
+    border-color: #2b6c44;
+    transform: scale(1.08) translateY(-3px) !important;
+    box-shadow: 0 8px 18px rgba(43, 108, 68, 0.22);
+}
+
+/* 풀잎에 숫자가 입력되었을 때 */
+.leaf-pin-input.filled {
+    background: linear-gradient(145deg, #e7f5ec 0%, #d4ebdd 100%);
+    border-color: #3b8259;
 }
 
 .passcode-error {
     color: #c53030;
     font-size: 0.85rem;
     font-weight: 600;
-    margin-top: -4px;
+    margin-top: 4px;
 }
 
 .shake {
@@ -899,5 +936,15 @@ body {
     .btn-secondary {
         padding: 12px 14px;
         font-size: 0.92rem;
+    }
+
+    .leaf-pin-container {
+        gap: 8px;
+    }
+
+    .leaf-pin-input {
+        width: 48px;
+        height: 58px;
+        font-size: 1.5rem;
     }
 }
