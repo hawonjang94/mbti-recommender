@@ -1,6 +1,6 @@
 /* ========================================================
    🌿 Mind & Act - 힐링 세이지/포레스트 그린 테마 스타일시트
-   마음이 편안해지는 자연주의 허브 & 포레스트 감성 디자인
+   모바일 최적화 (패딩 슬림화 & 글자 간격/줄바꿈 완벽 정돈)
    ======================================================== */
 
 /* 1. 기본 리셋 및 전역 스타일 */
@@ -8,20 +8,22 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    word-break: keep-all; /* 한글 단어가 중간에서 끊기지 않도록 단어 단위 줄바꿈 */
+    overflow-wrap: break-word;
 }
 
 body {
     font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: linear-gradient(180deg, #f3f7f4 0%, #eaf1ed 100%);
     color: #2d3732;
-    line-height: 1.65;
-    padding: 30px 14px;
+    line-height: 1.6;
+    padding: 20px 12px;
     min-height: 100vh;
 }
 
 /* 앱 전체 중앙 컨테이너 */
 .app-container {
-    max-width: 640px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -30,13 +32,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
-    padding-bottom: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
     border-bottom: 1.5px solid #dbe6df;
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #264e36;
     letter-spacing: -0.5px;
@@ -46,23 +48,23 @@ body {
 }
 
 .header-tag {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     background-color: #e5f0ea;
     color: #2d6346;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 20px;
     font-weight: 600;
     border: 1px solid #cce2d6;
 }
 
-/* 카드 기본 컨테이너 */
+/* 카드 기본 컨테이너 (슬림한 패딩 적용) */
 .card {
     background: #ffffff;
-    border-radius: 20px;
-    padding: 36px 28px;
-    box-shadow: 0 10px 30px rgba(38, 78, 54, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+    border-radius: 18px;
+    padding: 26px 20px;
+    box-shadow: 0 8px 24px rgba(38, 78, 54, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
     border: 1px solid #edf3ef;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     transition: all 0.3s ease;
 }
 
@@ -72,13 +74,13 @@ body {
 }
 
 .fade-in {
-    animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(8px);
     }
     to {
         opacity: 1;
@@ -97,39 +99,39 @@ body {
     display: inline-block;
     background-color: #edf5f0;
     color: #3b7352;
-    font-size: 0.85rem;
-    padding: 6px 14px;
-    border-radius: 14px;
+    font-size: 0.82rem;
+    padding: 5px 12px;
+    border-radius: 12px;
     font-weight: 600;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     border: 1px solid #d5e7dc;
 }
 
 .main-title {
-    font-size: 1.95rem;
+    font-size: 1.75rem;
     color: #1e3a29;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     line-height: 1.35;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.6px;
     font-weight: 700;
 }
 
 .main-desc {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: #516457;
-    margin-bottom: 26px;
-    line-height: 1.7;
+    margin-bottom: 20px;
+    line-height: 1.65;
 }
 
 .notice-box {
     background-color: #f7faf8;
     border-left: 4px solid #5a9472;
-    padding: 15px 18px;
+    padding: 12px 14px;
     border-radius: 8px;
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: #3e5a47;
-    margin-bottom: 32px;
-    line-height: 1.6;
+    margin-bottom: 24px;
+    line-height: 1.55;
     border-top: 1px solid #eef4f0;
     border-right: 1px solid #eef4f0;
     border-bottom: 1px solid #eef4f0;
@@ -141,20 +143,19 @@ body {
     width: 100%;
     background: linear-gradient(135deg, #44795b 0%, #325e45 100%);
     color: #ffffff;
-    font-size: 1.12rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    padding: 17px 22px;
+    padding: 15px 18px;
     border: none;
-    border-radius: 14px;
+    border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(50, 94, 69, 0.25);
-    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(50, 94, 69, 0.2);
+    transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
     background: linear-gradient(135deg, #3a684e 0%, #284c37 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(50, 94, 69, 0.32);
+    transform: translateY(-1px);
 }
 
 .btn-primary:active {
@@ -166,14 +167,14 @@ body {
     width: 100%;
     background-color: #f1f6f3;
     color: #2e4d3a;
-    font-size: 1rem;
+    font-size: 0.96rem;
     font-weight: 600;
-    padding: 15px 20px;
+    padding: 13px 16px;
     border: 1px solid #d4e3da;
-    border-radius: 14px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 }
 
 .btn-secondary:hover {
@@ -185,93 +186,92 @@ body {
    3. 질문 화면 & 상단 진행률 프로그레스 바
    ======================================================== */
 .progress-container {
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 }
 
 .progress-info {
     display: flex;
     justify-content: space-between;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #637a6b;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .progress-bar-bg {
     width: 100%;
-    height: 10px;
+    height: 8px;
     background-color: #e5ece8;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
 .progress-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, #6bb38a 0%, #3e7354 100%);
-    border-radius: 10px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    transition: width 0.35s ease;
 }
 
 .category-badge {
     display: inline-block;
     background-color: #e8f3ed;
     color: #2f6547;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    padding: 5px 12px;
-    border-radius: 8px;
-    margin-bottom: 14px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
     border: 1px solid #d3e7dc;
 }
 
 .question-title {
-    font-size: 1.38rem;
+    font-size: 1.25rem;
     color: #1e3827;
-    margin-bottom: 26px;
+    margin-bottom: 20px;
     line-height: 1.45;
-    min-height: 60px;
     font-weight: 600;
 }
 
-/* 선택지 버튼 디자인 */
+/* 선택지 버튼 디자인 (여백 슬림화 & 줄바꿈 최적화) */
 .options-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .option-btn {
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    border: 2px solid #e1ebe5;
-    border-radius: 15px;
-    padding: 18px 22px;
+    border: 1.5px solid #e1ebe5;
+    border-radius: 13px;
+    padding: 14px 16px;
     text-align: left;
     cursor: pointer;
-    transition: all 0.22s ease;
+    transition: all 0.2s ease;
 }
 
 .option-btn:hover {
     border-color: #4f8766;
     background-color: #f7faf8;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(62, 115, 84, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(62, 115, 84, 0.08);
 }
 
 .option-tag {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     background-color: #eef5f1;
     color: #3b6b4f;
     font-weight: 700;
-    border-radius: 10px;
-    margin-right: 16px;
+    border-radius: 8px;
+    margin-right: 12px;
     flex-shrink: 0;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: all 0.2s ease;
 }
 
@@ -281,22 +281,23 @@ body {
 }
 
 .option-label {
-    font-size: 1.02rem;
+    font-size: 0.96rem;
     color: #2b3a31;
     line-height: 1.45;
+    flex: 1;
 }
 
 /* ========================================================
    4. 로딩 애니메이션 스피너 (포레스트 힐링 톤)
    ======================================================== */
 .spinner {
-    width: 52px;
-    height: 52px;
-    border: 5px solid #e2ece6;
-    border-top: 5px solid #3e7354;
+    width: 44px;
+    height: 44px;
+    border: 4px solid #e2ece6;
+    border-top: 4px solid #3e7354;
     border-radius: 50%;
-    animation: spin 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-    margin: 40px auto 24px auto;
+    animation: spin 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+    margin: 32px auto 18px auto;
 }
 
 @keyframes spin {
@@ -305,16 +306,16 @@ body {
 }
 
 .loading-title {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     color: #1f3b2a;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     font-weight: 600;
 }
 
 .loading-desc {
     color: #637a6b;
-    font-size: 0.96rem;
-    line-height: 1.6;
+    font-size: 0.92rem;
+    line-height: 1.55;
 }
 
 /* ========================================================
@@ -324,104 +325,103 @@ body {
     display: inline-block;
     background-color: #edf5f0;
     color: #336647;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 20px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     border: 1px solid #d4e7db;
 }
 
 .result-mbti {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
     font-weight: 800;
     color: #255438;
     letter-spacing: 2px;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
-/* MBTI 맞춤형 캐릭터 카드 디자인 */
+/* MBTI 맞춤형 캐릭터 카드 디자인 (슬림형) */
 .character-card {
     background: linear-gradient(145deg, #f5faf7 0%, #edf5f0 100%);
     border: 1.5px solid #d8eade;
-    border-radius: 18px;
-    padding: 22px 18px;
-    margin: 14px auto 22px auto;
-    max-width: 440px;
-    box-shadow: 0 4px 16px rgba(45, 90, 60, 0.06);
+    border-radius: 16px;
+    padding: 18px 14px;
+    margin: 12px auto 18px auto;
+    max-width: 420px;
+    box-shadow: 0 4px 14px rgba(45, 90, 60, 0.05);
     text-align: center;
 }
 
 .character-avatar {
-    font-size: 3.6rem;
+    font-size: 3.2rem;
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: inline-block;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.08));
     animation: gentleBounce 2.5s ease-in-out infinite;
 }
 
 @keyframes gentleBounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    50% { transform: translateY(-4px); }
 }
 
 .character-name {
-    font-size: 1.38rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #1f452e;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     letter-spacing: -0.4px;
 }
 
 .character-slogan {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #51715e;
     font-style: italic;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .character-tags {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
 }
 
 .char-tag {
     background-color: #ffffff;
     color: #2d6343;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 12px;
+    padding: 3px 8px;
+    border-radius: 10px;
     border: 1px solid #d0e4d7;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .result-summary {
-    font-size: 1.02rem;
+    font-size: 0.95rem;
     color: #4b6152;
-    line-height: 1.7;
-    margin-bottom: 30px;
+    line-height: 1.65;
+    margin-bottom: 24px;
     background: #f8faf8;
-    padding: 16px 20px;
-    border-radius: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
 }
 
 /* 성향 4대 지표 백분율(%) 스펙트럼 프로그레스 바 */
 .spectrum-section {
     background-color: #f7faf8;
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 32px;
+    border-radius: 14px;
+    padding: 18px 16px;
+    margin-bottom: 24px;
     border: 1px solid #e8efe9;
 }
 
 .sub-title {
-    font-size: 1.18rem;
+    font-size: 1.1rem;
     color: #1f3a29;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -429,7 +429,7 @@ body {
 }
 
 .spectrum-item {
-    margin-bottom: 16px;
+    margin-bottom: 13px;
 }
 
 .spectrum-item:last-child {
@@ -439,9 +439,9 @@ body {
 .spectrum-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     color: #4b6353;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     font-weight: 500;
 }
 
@@ -451,28 +451,28 @@ body {
 
 .spectrum-bar-bg {
     width: 100%;
-    height: 12px;
+    height: 10px;
     background-color: #e2ece6;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
 .spectrum-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, #4fa377 0%, #306b49 100%);
-    border-radius: 10px;
+    border-radius: 8px;
     transition: width 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
     width: 50%;
 }
 
 /* ========================================================
-   지표별 상세 백분율(%) 요약표 스타일
+   지표별 상세 백분율(%) 요약표 스타일 (슬림 패딩 최적화)
    ======================================================== */
 .table-section {
     background-color: #f7faf8;
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 32px;
+    border-radius: 14px;
+    padding: 18px 14px;
+    margin-bottom: 24px;
     border: 1px solid #e8efe9;
 }
 
@@ -486,11 +486,11 @@ body {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 6px;
-    font-size: 0.93rem;
+    margin-top: 4px;
+    font-size: 0.88rem;
     text-align: center;
     background-color: #ffffff;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
     border: 1px solid #e2ebe5;
 }
@@ -500,18 +500,20 @@ body {
 }
 
 .mbti-table th {
-    padding: 12px 10px;
+    padding: 10px 6px;
     font-weight: 700;
     color: #274f37;
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     border-bottom: 1.5px solid #d6e5dc;
+    white-space: nowrap;
 }
 
 .mbti-table td {
-    padding: 13px 10px;
+    padding: 10px 6px;
     border-bottom: 1px solid #edf4ef;
     color: #435b4c;
     vertical-align: middle;
+    font-size: 0.85rem;
 }
 
 .mbti-table tbody tr:last-child td {
@@ -527,6 +529,7 @@ body {
     color: #264e36;
     background-color: #fbfdfc;
     border-right: 1px solid #eef5f0;
+    white-space: nowrap;
 }
 
 .percent-val {
@@ -539,76 +542,70 @@ body {
     display: inline-block;
     background: linear-gradient(135deg, #44795b 0%, #306547 100%);
     color: #ffffff;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 14px;
+    padding: 3px 8px;
+    border-radius: 10px;
     letter-spacing: -0.3px;
-    box-shadow: 0 2px 6px rgba(48, 101, 71, 0.2);
+    white-space: nowrap;
 }
 
 /* AI 추천 활동 카드 리스트 */
 .activities-section {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 .activities-grid {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 13px;
 }
 
 .activity-card {
     border: 1px solid #e1ede5;
-    border-radius: 16px;
-    padding: 20px 22px;
+    border-radius: 14px;
+    padding: 16px 18px;
     background: #ffffff;
-    box-shadow: 0 4px 14px rgba(34, 69, 48, 0.03);
-    transition: transform 0.2s ease;
-}
-
-.activity-card:hover {
-    transform: translateY(-2px);
-    border-color: #bed8c7;
+    box-shadow: 0 3px 10px rgba(34, 69, 48, 0.03);
 }
 
 .activity-name {
-    font-size: 1.15rem;
+    font-size: 1.08rem;
     font-weight: 700;
     color: #245237;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .activity-reason {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: #4d6354;
-    margin-bottom: 12px;
-    line-height: 1.6;
+    margin-bottom: 10px;
+    line-height: 1.55;
 }
 
 .activity-tip {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     background-color: #f1f7f3;
     color: #2b543b;
-    padding: 10px 14px;
+    padding: 8px 12px;
     border-radius: 8px;
-    line-height: 1.5;
+    line-height: 1.45;
     border: 1px solid #dcebe1;
 }
 
 /* 실시간 검색 결과 영역 */
 .search-section {
     background-color: #f7faf8;
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 32px;
+    border-radius: 14px;
+    padding: 18px 16px;
+    margin-bottom: 24px;
     border: 1px solid #e8efe9;
 }
 
 .search-keyword-info {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: #5c7565;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 }
 
 .search-keyword-info strong {
@@ -618,26 +615,21 @@ body {
 .search-results-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .search-item {
     background: #ffffff;
-    padding: 14px 18px;
-    border-radius: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
     border: 1px solid #e1ece5;
-    transition: border-color 0.2s;
-}
-
-.search-item:hover {
-    border-color: #5a9472;
 }
 
 .search-item a {
     color: #28593c;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.98rem;
+    font-size: 0.93rem;
 }
 
 .search-item a:hover {
@@ -646,22 +638,147 @@ body {
 }
 
 .search-snippet {
-    font-size: 0.86rem;
+    font-size: 0.84rem;
     color: #697d70;
-    margin-top: 5px;
-    line-height: 1.5;
+    margin-top: 4px;
+    line-height: 1.45;
 }
 
 /* 하단 액션 버튼 */
 .action-buttons {
-    margin-top: 24px;
+    margin-top: 20px;
 }
 
 /* 하단 푸터 */
 .app-footer {
     text-align: center;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: #7b9484;
-    margin-top: 36px;
-    padding: 10px 0;
+    margin-top: 28px;
+    padding: 8px 0;
+}
+
+/* ========================================================
+   6. 모바일 전용 반응형 미디어 쿼리 (스마트폰 최적화)
+   ======================================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .card {
+        padding: 20px 14px;
+        border-radius: 16px;
+        margin-bottom: 16px;
+    }
+
+    .main-title {
+        font-size: 1.55rem;
+        margin-bottom: 12px;
+    }
+
+    .main-desc {
+        font-size: 0.94rem;
+        margin-bottom: 16px;
+    }
+
+    .notice-box {
+        padding: 10px 12px;
+        font-size: 0.84rem;
+        margin-bottom: 20px;
+    }
+
+    .question-title {
+        font-size: 1.15rem;
+        margin-bottom: 16px;
+        line-height: 1.4;
+    }
+
+    .option-btn {
+        padding: 12px 13px;
+        gap: 8px;
+        border-radius: 12px;
+    }
+
+    .option-tag {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+        margin-right: 10px;
+    }
+
+    .option-label {
+        font-size: 0.91rem;
+        line-height: 1.4;
+    }
+
+    .result-mbti {
+        font-size: 2.5rem;
+    }
+
+    .character-card {
+        padding: 15px 12px;
+        margin: 10px auto 16px auto;
+        border-radius: 14px;
+    }
+
+    .character-avatar {
+        font-size: 2.8rem;
+        margin-bottom: 8px;
+    }
+
+    .character-name {
+        font-size: 1.18rem;
+    }
+
+    .character-slogan {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .spectrum-section,
+    .table-section,
+    .search-section {
+        padding: 15px 12px;
+        border-radius: 12px;
+        margin-bottom: 18px;
+    }
+
+    .mbti-table th,
+    .mbti-table td {
+        padding: 8px 4px;
+        font-size: 0.8rem;
+    }
+
+    .dominant-tag {
+        font-size: 0.74rem;
+        padding: 2px 6px;
+    }
+
+    .activity-card {
+        padding: 14px 14px;
+    }
+
+    .activity-name {
+        font-size: 1rem;
+    }
+
+    .activity-reason {
+        font-size: 0.88rem;
+    }
+
+    .activity-tip {
+        font-size: 0.82rem;
+        padding: 7px 10px;
+    }
+
+    .btn-primary {
+        padding: 13px 16px;
+        font-size: 1rem;
+    }
+
+    .btn-secondary {
+        padding: 12px 14px;
+        font-size: 0.92rem;
+    }
 }
