@@ -104,8 +104,8 @@ const questions = [
 let currentQuestionIndex = 0;
 const userAnswers = []; // 사용자가 선택한 지표 (['E', 'S', 'T', ...])
 
-// 0. 암호코드 설정 (기본 암호: 2026 또는 1234)
-const VALID_PASSCODES = ["2026", "1234"];
+// 0. 암호코드 설정 (기본 암호: 2222)
+const VALID_PASSCODES = ["2222"];
 
 // DOM 요소 참조
 const gateSection = document.getElementById("gate-section");
@@ -603,7 +603,7 @@ function renderResults(mbti, scores, aiData, searchData) {
             const card = document.createElement("div");
             card.className = "activity-card fade-in";
             card.innerHTML = `
-                <div class="activity-name">🎯 ${act.name}</div>
+                <div class="activity-name">🌿 ${act.name}</div>
                 <div class="activity-reason">${act.reason}</div>
                 <div class="activity-tip">💡 <strong>실천 팁:</strong> ${act.tip}</div>
             `;
