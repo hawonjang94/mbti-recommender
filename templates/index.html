@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/icon-192.png') }}">
 
     <!-- 외부 스타일시트 연결 (캐시 버스팅 적용) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=7">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=8">
     <!-- 깔끔한 구글 웹폰트(Pretendard 대체용 Noto Sans KR) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,23 @@
             <span class="header-tag">AI 라이프스타일 큐레이터</span>
         </header>
 
-        <!-- 1. 시작(Intro) 화면 -->
-        <section id="intro-section" class="card fade-in">
+        <!-- 0. 암호코드 입력(Gate) 화면 -->
+        <section id="gate-section" class="card text-center fade-in">
+            <div class="intro-badge">🔒 비공개 접근 모드</div>
+            <h1 class="main-title">입장 코드 확인</h1>
+            <p class="main-desc">
+                Mind & Act 성향 분석 서비스입니다.<br>
+                입장을 위해 부여받으신 <strong>암호코드</strong>를 입력해 주세요.
+            </p>
+            <div class="passcode-box">
+                <input type="password" id="passcode-input" class="passcode-input" placeholder="암호코드 입력" maxlength="20" autocomplete="off">
+                <p id="passcode-error" class="passcode-error hidden">⚠️ 암호코드가 일치하지 않습니다.</p>
+                <button id="btn-unlock" class="btn-primary">입장하기 →</button>
+            </div>
+        </section>
+
+        <!-- 1. 시작(Intro) 화면 (초기에는 숨김) -->
+        <section id="intro-section" class="card fade-in hidden">
             <div class="intro-badge">15문항 심층 분석</div>
             <h1 class="main-title">나만의 숨겨진 쉼표 찾기</h1>
             <p class="main-desc">
@@ -173,25 +188,25 @@
                                 <td class="td-category">에너지 방향</td>
                                 <td>외향(E) <strong id="tbl-score-e" class="percent-val">0%</strong></td>
                                 <td>내향(I) <strong id="tbl-score-i" class="percent-val">0%</strong></td>
-                                <td><span id="tbl-dominant-ei" class="dominant-tag">외향형(E)</span></td>
+                                <td><span id="tbl-dominant-ei" class="dominant-tag">외향형 (E)</span></td>
                             </tr>
                             <tr>
                                 <td class="td-category">인식 방식</td>
                                 <td>감각(S) <strong id="tbl-score-s" class="percent-val">0%</strong></td>
                                 <td>직관(N) <strong id="tbl-score-n" class="percent-val">0%</strong></td>
-                                <td><span id="tbl-dominant-sn" class="dominant-tag">직관형(N)</span></td>
+                                <td><span id="tbl-dominant-sn" class="dominant-tag">직관형 (N)</span></td>
                             </tr>
                             <tr>
                                 <td class="td-category">판단 방식</td>
                                 <td>사고(T) <strong id="tbl-score-t" class="percent-val">0%</strong></td>
                                 <td>감정(F) <strong id="tbl-score-f" class="percent-val">0%</strong></td>
-                                <td><span id="tbl-dominant-tf" class="dominant-tag">감정형(F)</span></td>
+                                <td><span id="tbl-dominant-tf" class="dominant-tag">감정형 (F)</span></td>
                             </tr>
                             <tr>
                                 <td class="td-category">생활 양식</td>
                                 <td>판단(J) <strong id="tbl-score-j" class="percent-val">0%</strong></td>
                                 <td>인식(P) <strong id="tbl-score-p" class="percent-val">0%</strong></td>
-                                <td><span id="tbl-dominant-jp" class="dominant-tag">인식형(P)</span></td>
+                                <td><span id="tbl-dominant-jp" class="dominant-tag">인식형 (P)</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -245,7 +260,7 @@
     </div>
 
     <!-- 외부 스크립트 연결 (캐시 버스팅 적용) -->
-    <script src="{{ url_for('static', filename='js/app.js') }}?v=7"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}?v=8"></script>
 
     <!-- PWA 서비스 워커 등록 스크립트 -->
     <script>

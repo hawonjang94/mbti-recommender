@@ -93,8 +93,54 @@ body {
 }
 
 /* ========================================================
-   2. 시작(Intro) 화면 스타일
+   2. 시작(Intro) & 암호 게이트(Gate) 화면 스타일
    ======================================================== */
+.passcode-box {
+    max-width: 320px;
+    margin: 18px auto 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.passcode-input {
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 1.15rem;
+    text-align: center;
+    letter-spacing: 4px;
+    border: 2px solid #cce2d6;
+    border-radius: 12px;
+    background-color: #f7faf8;
+    color: #264e36;
+    font-weight: 700;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.passcode-input:focus {
+    border-color: #3e7354;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(62, 115, 84, 0.15);
+}
+
+.passcode-error {
+    color: #c53030;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: -4px;
+}
+
+.shake {
+    animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
 .intro-badge {
     display: inline-block;
     background-color: #edf5f0;

@@ -104,7 +104,15 @@ const questions = [
 let currentQuestionIndex = 0;
 const userAnswers = []; // 사용자가 선택한 지표 (['E', 'S', 'T', ...])
 
+// 0. 암호코드 설정 (기본 암호: 2026 또는 1234)
+const VALID_PASSCODES = ["2026", "1234"];
+
 // DOM 요소 참조
+const gateSection = document.getElementById("gate-section");
+const passcodeInput = document.getElementById("passcode-input");
+const passcodeError = document.getElementById("passcode-error");
+const btnUnlock = document.getElementById("btn-unlock");
+
 const introSection = document.getElementById("intro-section");
 const quizSection = document.getElementById("quiz-section");
 const loadingSection = document.getElementById("loading-section");
@@ -127,12 +135,45 @@ const textOptionB = document.getElementById("text-option-b");
 
 // 3. 이벤트 리스너 등록
 document.addEventListener("DOMContentLoaded", () => {
+    // 암호코드 세션 상태 확인
+    if (sessionStorage.getItem("mbti_unlocked") === "true") {
+        if (gateSection) gateSection.classList.add("hidden");
+        if (introSection) introSection.classList.remove("hidden");
+    } else {
+        if (gateSection) gateSection.classList.remove("hidden");
+        if (introSection) introSection.classList.add("hidden");
+        if (passcodeInput) passcodeInput.focus();
+    }
+
+    if (btnUnlock) btnUnlock.addEventListener("click", handleUnlock);
+    if (passcodeInput) {
+        passcodeInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") handleUnlock();
+        });
+    }
+
     btnStart.addEventListener("click", startQuiz);
     btnOptionA.addEventListener("click", () => handleAnswer("A"));
     btnOptionB.addEventListener("click", () => handleAnswer("B"));
     btnRestart.addEventListener("click", restartQuiz);
     btnCopyResult.addEventListener("click", copyResultText);
 });
+
+// 암호코드 검증 함수
+function handleUnlock() {
+    const entered = passcodeInput.value.trim();
+    if (VALID_PASSCODES.includes(entered)) {
+        sessionStorage.setItem("mbti_unlocked", "true");
+        passcodeError.classList.add("hidden");
+        gateSection.classList.add("hidden");
+        introSection.classList.remove("hidden");
+    } else {
+        passcodeError.classList.remove("hidden");
+        passcodeInput.classList.add("shake");
+        setTimeout(() => passcodeInput.classList.remove("shake"), 350);
+        passcodeInput.focus();
+    }
+}
 
 // 4. 퀴즈 시작 함수
 function startQuiz() {
@@ -485,19 +526,19 @@ function renderResults(mbti, scores, aiData, searchData) {
     // 4대 지표 상세 요약표(Table) 데이터 채우기
     document.getElementById("tbl-score-e").textContent = `${scores.E}%`;
     document.getElementById("tbl-score-i").textContent = `${scores.I}%`;
-    document.getElementById("tbl-dominant-ei").textContent = scores.E >= scores.I ? `외향형 (E, ${scores.E}%)` : `내향형 (I, ${scores.I}%)`;
+    document.getElementById("tbl-dominant-ei").textContent = scores.E >= scores.I ? "외향형 (E)" : "내향형 (I)";
 
     document.getElementById("tbl-score-s").textContent = `${scores.S}%`;
     document.getElementById("tbl-score-n").textContent = `${scores.N}%`;
-    document.getElementById("tbl-dominant-sn").textContent = scores.S >= scores.N ? `감각형 (S, ${scores.S}%)` : `직관형 (N, ${scores.N}%)`;
+    document.getElementById("tbl-dominant-sn").textContent = scores.S >= scores.N ? "감각형 (S)" : "직관형 (N)";
 
     document.getElementById("tbl-score-t").textContent = `${scores.T}%`;
     document.getElementById("tbl-score-f").textContent = `${scores.F}%`;
-    document.getElementById("tbl-dominant-tf").textContent = scores.T >= scores.F ? `사고형 (T, ${scores.T}%)` : `감정형 (F, ${scores.F}%)`;
+    document.getElementById("tbl-dominant-tf").textContent = scores.T >= scores.F ? "사고형 (T)" : "감정형 (F)";
 
     document.getElementById("tbl-score-j").textContent = `${scores.J}%`;
     document.getElementById("tbl-score-p").textContent = `${scores.P}%`;
-    document.getElementById("tbl-dominant-jp").textContent = scores.J >= scores.P ? `판단형 (J, ${scores.J}%)` : `인식형 (P, ${scores.P}%)`;
+    document.getElementById("tbl-dominant-jp").textContent = scores.J >= scores.P ? "판단형 (J)" : "인식형 (P)";
 
     // AI 추천 활동 카드 리스트 생성
     const activitiesList = document.getElementById("activities-list");
