@@ -27,14 +27,22 @@ body {
     margin: 0 auto;
 }
 
-/* 상단 헤더 */
+/* 상단 헤더 & 상단 유틸리티 툴바 */
 .app-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
     margin-bottom: 18px;
     padding-bottom: 10px;
     border-bottom: 1.5px solid #dbe6df;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .logo {
@@ -48,13 +56,47 @@ body {
 }
 
 .header-tag {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     background-color: #e5f0ea;
     color: #2d6346;
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 20px;
     font-weight: 600;
     border: 1px solid #cce2d6;
+}
+
+/* 상단 유틸리티 버튼 그룹 (화면 저장, PDF 전환, 인쇄) */
+.top-util-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.util-btn {
+    background-color: #ffffff;
+    border: 1px solid #cce2d6;
+    color: #29553a;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 9px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    box-shadow: 0 1px 3px rgba(38, 78, 54, 0.05);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.util-btn:hover {
+    background-color: #edf6f1;
+    border-color: #3b7e56;
+    transform: translateY(-1px);
+}
+
+.util-btn:active {
+    transform: translateY(0);
 }
 
 /* 카드 기본 컨테이너 (슬림한 패딩 적용) */
@@ -946,5 +988,50 @@ body {
         width: 48px;
         height: 58px;
         font-size: 1.5rem;
+    }
+}
+
+/* ========================================================
+   인쇄 및 PDF 출력 전용 스타일 (@media print)
+   ======================================================== */
+@media print {
+    body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+    }
+
+    .app-header,
+    .top-util-bar,
+    .action-buttons,
+    .app-footer,
+    #gate-section,
+    #intro-section,
+    #quiz-section,
+    #loading-section {
+        display: none !important;
+    }
+
+    #result-section {
+        display: block !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 10px !important;
+        margin: 0 !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .activity-card,
+    .spectrum-section,
+    .table-section,
+    .hobbies-section,
+    .lifestyle-section,
+    .character-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 }

@@ -1,9 +1,9 @@
 // 서비스 워커 (Service Worker) - PWA 오프라인 캐싱 및 앱 설치 지원
-const CACHE_NAME = 'mind-act-cache-v7';
+const CACHE_NAME = 'mind-act-cache-v8';
 const ASSETS_TO_CACHE = [
   '/',
-  '/static/css/style.css?v=10',
-  '/static/js/app.js?v=10',
+  '/static/css/style.css?v=11',
+  '/static/js/app.js?v=11',
   '/static/manifest.json',
   '/static/icons/icon-192.png',
   '/static/icons/icon-512.png'

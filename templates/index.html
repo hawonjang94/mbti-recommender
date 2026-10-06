@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/icon-192.png') }}">
 
     <!-- 외부 스타일시트 연결 (캐시 버스팅 적용) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=10">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=11">
     <!-- 깔끔한 구글 웹폰트(Pretendard 대체용 Noto Sans KR) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,10 +22,18 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- 상단 헤더 -->
+        <!-- 상단 헤더 & 상단 유틸리티 버튼 -->
         <header class="app-header">
-            <div class="logo">🌿 Mind & Act</div>
-            <span class="header-tag">AI 라이프스타일 큐레이터</span>
+            <div class="header-left">
+                <div class="logo">🌿 Mind & Act</div>
+                <span class="header-tag">AI 큐레이터</span>
+            </div>
+            <!-- 상단 화면 저장 / PDF 전환 / 인쇄 버튼 그룹 -->
+            <div class="top-util-bar">
+                <button id="btn-save-image" class="util-btn" title="결과 화면을 이미지로 저장">📸 화면 저장</button>
+                <button id="btn-save-pdf" class="util-btn" title="PDF 파일로 저장">📄 PDF 전환</button>
+                <button id="btn-print" class="util-btn" title="결과 인쇄">🖨️ 인쇄</button>
+            </div>
         </header>
 
         <!-- 0. 암호코드 입력(Gate) 화면 -->
@@ -265,8 +273,11 @@
         </footer>
     </div>
 
+    <!-- 화면 캡처용 html2canvas 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <!-- 외부 스크립트 연결 (캐시 버스팅 적용) -->
-    <script src="{{ url_for('static', filename='js/app.js') }}?v=10"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}?v=11"></script>
 
     <!-- PWA 서비스 워커 등록 스크립트 -->
     <script>

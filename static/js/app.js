@@ -199,6 +199,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnUnlock) btnUnlock.addEventListener("click", handleUnlock);
 
+    // 상단 화면 저장, PDF 저장, 인쇄 버튼 이벤트 연결
+    const btnSaveImage = document.getElementById("btn-save-image");
+    const btnSavePdf = document.getElementById("btn-save-pdf");
+    const btnPrint = document.getElementById("btn-print");
+
+    if (btnSaveImage) btnSaveImage.addEventListener("click", handleSaveImage);
+    if (btnSavePdf) btnSavePdf.addEventListener("click", handleSavePdf);
+    if (btnPrint) btnPrint.addEventListener("click", handlePrint);
+
     btnStart.addEventListener("click", startQuiz);
     btnOptionA.addEventListener("click", () => handleAnswer("A"));
     btnOptionB.addEventListener("click", () => handleAnswer("B"));
@@ -735,4 +744,62 @@ function restartQuiz() {
     resultSection.classList.add("hidden");
     introSection.classList.remove("hidden");
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 12. 상단 유틸리티 기능: 화면 저장 (이미지 캡처 다운로드)
+function handleSaveImage() {
+    // 결과 화면이 보이는지 확인 (결과 화면 우선, 아니면 전체 앱 영역)
+    const targetElement = (!resultSection.classList.contains("hidden")) 
+        ? resultSection 
+        : document.querySelector(".app-container");
+
+    if (!targetElement) return;
+
+    const originalScrollY = window.scrollY;
+    const saveBtn = document.getElementById("btn-save-image");
+    const originalText = saveBtn ? saveBtn.textContent : "";
+    if (saveBtn) saveBtn.textContent = "⏳ 저장 중...";
+
+    if (typeof html2canvas === "function") {
+        html2canvas(targetElement, {
+            scale: 2, // 고해상도 캡처
+            useCORS: true,
+            backgroundColor: "#f7f9f6",
+            logging: false
+        }).then(canvas => {
+            const link = document.createElement("a");
+            const mbti = document.getElementById("res-mbti")?.textContent || "MBTI";
+            link.download = `Mind_Act_${mbti}_결과리포트.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+            if (saveBtn) saveBtn.textContent = originalText;
+        }).catch(err => {
+            console.error("화면 저장 오류:", err);
+            alert("화면 저장 중 오류가 발생했습니다. 브라우저 설정을 확인해 주세요.");
+            if (saveBtn) saveBtn.textContent = originalText;
+        });
+    } else {
+        alert("화면 캡처 모듈을 불러오는 중입니다. 잠시 후 다시 시도해 주세요.");
+        if (saveBtn) saveBtn.textContent = originalText;
+    }
+}
+
+// 13. 상단 유틸리티 기능: PDF 파일 전환
+function handleSavePdf() {
+    if (resultSection.classList.contains("hidden")) {
+        alert("💡 먼저 MBTI 검사를 완료해 결과 화면을 확인하신 후 PDF로 저장해 보세요!");
+        return;
+    }
+    // 안내 팝업 후 브라우저 인쇄 대화상자 호출 (대상: 'PDF로 저장' 선택 안내)
+    alert("🖨️ 인쇄 창이 열리면 [대상/프린터] 목록에서 'PDF로 저장' 또는 'Save as PDF'를 선택해 주세요.");
+    window.print();
+}
+
+// 14. 상단 유틸리티 기능: 인쇄
+function handlePrint() {
+    if (resultSection.classList.contains("hidden")) {
+        const confirmPrint = confirm("아직 검사 결과가 나오지 않았습니다. 현재 화면을 그대로 인쇄하시겠습니까?");
+        if (!confirmPrint) return;
+    }
+    window.print();
 }
