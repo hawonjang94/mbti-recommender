@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/icon-192.png') }}">
 
     <!-- 외부 스타일시트 연결 (캐시 버스팅 적용) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=6">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=7">
     <!-- 깔끔한 구글 웹폰트(Pretendard 대체용 Noto Sans KR) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,6 +206,22 @@
                 </div>
             </div>
 
+            <!-- 성향 맞춤 추천 취미 섹션 -->
+            <div class="hobbies-section">
+                <h3 class="sub-title">🎨 성향에 딱 맞는 추천 취미</h3>
+                <div id="hobbies-list" class="hobbies-grid">
+                    <!-- 자바스크립트로 추천 취미 칩이 채워집니다 -->
+                </div>
+            </div>
+
+            <!-- 에너지 충전! 하면 좋은 것 (라이프스타일 팁) -->
+            <div class="lifestyle-section">
+                <h3 class="sub-title">🍀 에너지 충전을 위해 하면 좋은 것</h3>
+                <ul id="lifestyle-list" class="lifestyle-list">
+                    <!-- 자바스크립트로 힐링 루틴 리스트가 채워집니다 -->
+                </ul>
+            </div>
+
             <!-- 실시간 검색 보강 정보 영역 -->
             <div id="search-section" class="search-section hidden">
                 <h3 class="sub-title">🔍 관련 추천 검색 팁</h3>
@@ -229,7 +245,7 @@
     </div>
 
     <!-- 외부 스크립트 연결 (캐시 버스팅 적용) -->
-    <script src="{{ url_for('static', filename='js/app.js') }}?v=6"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}?v=7"></script>
 
     <!-- PWA 서비스 워커 등록 스크립트 -->
     <script>
